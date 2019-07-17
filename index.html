@@ -2,48 +2,25 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    .wrap {
-      display: flex;
-      width: 300px;
-      flex-wrap: wrap;
-      background-color: blueviolet;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-direction: row;
-    }
-
-    .cell {
-      border: 1px solid #aaa;
-      width: 50px;
-      text-align: center;
-      background-color: black;
-      color: #fff
-    }
-
-    .cell:nth-child(2) {
-      order: 10;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="cell">1<br />22</div>
-    <div class="cell">2</div>
-    <div class="cell">3</div>
-    <div class="cell">4</div>
-    <div class="cell">5</div>
-    <div class="cell">6<br />44<br />55</div>
-    <div class="cell">7</div>
-    <div class="cell">8</div>
-    <div class="cell">9</div>
-    <div class="cell">10</div>
-  </div>
+    <script src="some-skills.js"> </script>
+    <script>
+        var sum = function sum2(x, y) {
+            debugger
+            function inner(){
+                console.log(arguments.callee.caller)
+                return x + y
+            }
+           return inner()
+        }
+        sum(1,2)
+    </script>
 </body>
 
 </html>
