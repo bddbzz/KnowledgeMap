@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    #test{
+        background-color: #000;
+        width: 100px;
+        height: 50px;
+    }
+    </style>
 </head>
 
 <body>
-    <script src="some-skills.js"> </script>
+    <div id="test" draggable="true">test</div>
+    <script src="response.js"> </script>
     <script>
-        var sum = function sum2(x, y) {
-            debugger
-            function inner(){
-                console.log(arguments.callee.caller)
-                return x + y
-            }
-           return inner()
-        }
-        sum(1,2)
+
     </script>
 </body>
 
