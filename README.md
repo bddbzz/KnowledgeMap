@@ -1,17 +1,25 @@
 # 前端技术
 ## JavaScript元编程
-写一段自动写程序的程序,元编程就是将代码视作数据，直接用字符串 or AST or 其他任何形式去操纵代码，以此获得一些维护性、效率上的好处
-eval、new Function、Proxy、Reflect 
+元编程就是将代码视作数据，通过撰写代码生成和改变代码来使程序获得额外的能力，在JavaScript里面可以使用eval、new Function、Proxy、Reflect等方式去实现。 
 - https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Meta_programming
 - https://segmentfault.com/a/1190000004950743
-
+- https://zhuanlan.zhihu.com/p/20754002
 ## Helpers
 - 类型判断
 - 字符串扩展
 - 数组扩展
+- 日期扩展
+- 对象扩展
+## Inheritance
+## FP
+- curry
+- partial
 ## Promise
 ## Throttle/Debounce
+## AOP
+## Storage
 ## Ajax
+- https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
 ## Validator
 ## Template Engine
 ## AMD

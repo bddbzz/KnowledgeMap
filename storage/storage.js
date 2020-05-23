@@ -1,7 +1,8 @@
 const DEFAULT_EXPIRES = 20 * 60 * 1000
 export class Storage {
     constructor(storage) {
-        this.isLocalStorage = storage === window.localStorage
+        this.isLocal = storage === window.localStorage
+        this.isCache = !(storage instanceof window.Storage)
         this.$store = storage
     }
     _setLocalItem(key, value, expires = DEFAULT_EXPIRES) {
@@ -13,10 +14,11 @@ export class Storage {
     }
     _getLocalItem(key) {
         let result = this.$store.getItem(key)
-        if (typeof result === "string") {
+        if (typeof result === 'string') {
             let resultObj = JSON.parse(result)
             let expireTime = resultObj.expireTime
             if (this.isExpired(expireTime)) {
+                this.removeItem(key)
                 return null
             }
             return resultObj.value
@@ -28,16 +30,23 @@ export class Storage {
     }
     _getSessionItem(key) {
         let value = this.$store.getItem(key)
-        if (typeof value === "string") {
+        if (typeof value === 'string') {
             return JSON.parse(value)
         }
         return value
     }
     setItem() {
-        this[this.isLocalStorage ? "_setLocalItem" : "_setSessionItem"].apply(this, arguments)
+        if (this.isCache) {
+            this.$store.setItem.apply(undefined, arguments)
+            return
+        }
+        this[this.isLocal ? '_setLocalItem' : '_setSessionItem'].apply(this, arguments)
     }
     getItem() {
-        return this[this.isLocalStorage ? "_getLocalItem" : "_getSessionItem"].apply(this, arguments)
+        if (this.isCache) {
+            return this.$store.getItem.apply(undefined, arguments)
+        }
+        return this[this.isLocal ? '_getLocalItem' : '_getSessionItem'].apply(this, arguments)
     }
     removeItem(key) {
         this.$store.removeItem(key)
