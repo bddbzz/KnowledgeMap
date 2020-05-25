@@ -11,6 +11,7 @@
 - 日期扩展
 - 对象扩展
 ## Inheritance
+- https://cloud.tencent.com/developer/article/1495274
 ## FP
 - curry
 - partial
