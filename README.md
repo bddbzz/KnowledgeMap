@@ -12,6 +12,10 @@
 - 对象扩展
 ## Inheritance
 - https://cloud.tencent.com/developer/article/1495274
+## Desigin Patterns
+设计模式
+- Singleton
+- 公众号【前端一会】
 ## FP
 - curry
 - partial
