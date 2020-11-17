@@ -1,3 +1,4 @@
+//Proxy 是 通过调解（intercession）实现反射（Reflection through intercession） —— 包裹对象并通过自陷（trap）来拦截对象行为。
 let handler = {
     getPrototypeOf(target) {
         return Array.prototype
@@ -91,4 +92,38 @@ let revocable = Proxy.revocable({}, {
 let p4 = revocable.proxy
 console.log(p4.name)
 revocable.revoke()
-console.log(p4.name)
+//console.log(p4.name)
+//代理的默认行为其实是实现了对每个处理程序的钩子的反射调用
+let proxy = new Proxy({}, {
+    apply: Reflect.apply,
+    construct: Reflect.construct,
+    defineProperty: Reflect.defineProperty,
+    getOwnPropertyDescriptor: Reflect.getOwnPropertyDescriptor,
+    deleteProperty: Reflect.deleteProperty,
+    getPrototypeOf: Reflect.getPrototypeOf,
+    setPrototypeOf: Reflect.setPrototypeOf,
+    isExtensible: Reflect.isExtensible,
+    preventExtensions: Reflect.preventExtensions,
+    get: Reflect.get,
+    set: Reflect.set,
+    has: Reflect.has,
+    ownKeys: Reflect.ownKeys,
+});
+
+function urlBuilder(domain) {
+    let parts = []
+    let proxy = new Proxy(function () {
+        let resultValue = domain + "/" + parts.join("/")
+        parts = []
+        return resultValue
+    }, {
+        get: function (target, prop) {
+            parts.push(prop)
+            return proxy
+        }
+    })
+    return proxy
+}
+
+let google = urlBuilder("http://www.google.com")
+console.log(google.search.prodcuts.eggs())

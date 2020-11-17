@@ -1,3 +1,17 @@
+/**
+ * 两个子分支：
+ * --代码生成
+ *  |-eval
+ *  |-new Function
+ * --反射
+ *  |-函数 Function#name\length\bind\apply\call Object上的方法
+ *  |-反射、内省运算符，typeof instanceof delete 
+ *  |-ES6
+ *      |-Symbol
+ *      |-Reflect
+ *      |-Proxy
+ */
+
 //动态生成获取属性的函数
 class User {
     constructor(userId) {
