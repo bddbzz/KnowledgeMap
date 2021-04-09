@@ -23,3 +23,34 @@
 //string.matchAll(regex)返回的是遍历器，所以可以用for...of循环取出。相对于返回数组，返回遍历器的好处在于，如果匹配结果是一个很大的数组，那么遍历器比较节省资源
 //sticky，必须从剩余位置的第一个位置开始匹配，y修饰符号隐含了头部匹配的标志^
 //global，只要剩余位置中存在匹配
+
+function tokenize(TOKEN_REGEX, str) {
+  const result = []
+  let match = null
+  while (match = TOKEN_REGEX.exec(str)) {
+    result.push(match[1])
+  }
+  return result
+}
+console.log(tokenize(/\s*(\+|[0-9]+)\s*/g, "3x+4"))//g会忽略非法字符
+console.log(tokenize(/\s*(\+|[0-9]+)\s*/y, "3x+4"))//y遇到非法字符就会停止
+
+//ES2018引入s修饰符，使得.可以匹配任意字符，包括\r\n,dotAll模式
+//先行断言
+console.log(/\d+(?=%)/.test("100%"))
+
+//先行否定断言
+
+console.log(/^\d+(?!%)$/.test("100%"))
+
+//后行断言
+console.log(/(?<=\$)\d+/.test("$100"))
+
+//后行否定断言
+console.log(/^(?<!\$)\d+$/.test("$100"))
+{
+  console.log(/(?<=(\d+)(\d+))$/.exec('1053'))// ["", "1", "053"]
+  console.log(/^(\d+)(\d+)$/.exec('1053'))// ["1053", "105", "3"]
+  //上面代码中，需要捕捉两个组匹配。没有“后行断言”时，第一个括号是贪婪模式，第二个括号只能捕获一个字符，所以结果是105和3。
+  //而“后行断言”时，由于执行顺序是从右到左，第二个括号是贪婪模式，第一个括号只能捕获一个字符，所以结果是1和053。
+}
