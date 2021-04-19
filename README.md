@@ -1,8 +1,8 @@
 # 知识体系梳理
 
-## 数学
+## 数学\数据结构\算法
 
-## 数据结构与算法
+[Code](https://github.com/bddbzz/Algorithm.git '练习代码')
 
 ## 编译技术
 
