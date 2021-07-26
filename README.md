@@ -1,12 +1,12 @@
 # 知识体系梳理
 
-## 数学\数据结构\算法
+## 数学/数据结构/算法
 
-[Code](https://github.com/bddbzz/Algorithm.git '练习代码')
+[Code](https://github.com/bddbzz/Algorithm.git '数学-数据结构-算法')
 
 ## 编译技术
 
-## 网络技术
+## 网络协议/编程
 
 ## 操作系统
 
@@ -16,7 +16,9 @@
 
 ## C#/.NET5
 
-## JavaScript
+## JavaScript/ES2015+
+
+## Node
 
 ## WebAssembly
 
