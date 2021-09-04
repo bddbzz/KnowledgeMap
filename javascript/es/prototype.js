@@ -7,7 +7,7 @@ console.log(obj.foo, parentObj.foo)
 
 //case2 如果原型链上层对象上存在foo并且是只读属性writable:false，那么就无法修改属性或者在obj上创建屏蔽属性，在严格模式下还会报错
 const parentObj2 = {}
-Object.defineProperty(parentObj2, "foo", {
+Object.defineProperty(parentObj2, 'foo', {
     value: 5,
     writable: false
 })
@@ -31,3 +31,22 @@ obj3.foo = 3
 console.log(obj3.foo, parentObj3.foo)
 
 //case2\3 如果确实想在obj加上屏蔽属性，得用Object.defineProperty
+
+function findPrototypeByProperty(obj, propertyName) {
+    do {
+        if (obj.hasOwnProperty(propertyName)) {
+            return obj
+        }
+    } while ((obj = Object.getPrototypeOf(obj)))
+}
+const foo = { a: 1 }
+
+const bar = Object.create(foo)
+bar.b = 2
+
+const baz = Object.create(bar)
+baz.c = 3
+
+console.log(findPrototypeByProperty(baz, 'c') === baz) // true
+console.log(findPrototypeByProperty(baz, 'b') === bar) // true
+console.log(findPrototypeByProperty(baz, 'a') === foo) // true

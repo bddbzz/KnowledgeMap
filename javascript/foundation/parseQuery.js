@@ -63,3 +63,69 @@ function parseQuery3(search) {
 }
 
 parseQuery3(search)
+
+// 构造函数支持传入 URL 参数串
+searchParams = new URLSearchParams('foo=1&bar=2')
+
+// 构造函数也支持传入一个包含参数键值对的对象
+searchParams = new URLSearchParams({ foo: '1', bar: '2' })
+
+// 实例支持 get()、set()、has()、append() 四个方法
+console.log(searchParams.get('foo')) // "1"
+searchParams.set('foo', '10')
+console.log(searchParams.has('bar')) // true
+searchParams.append('foo', '100')
+
+// 实例支持 toString() 方法
+console.log(searchParams.toString()) // "foo=10&bar=2&foo=100"
+
+// 实例支持 for-of 迭代
+for (const [key, value] of searchParams) {
+    console.log([key, value])
+    // ["foo", "10"]
+    // ["bar", "2"]
+    // ["foo", "100"]
+}
+
+class URLSearchParams {
+    #searchParams = []
+
+    constructor(init) {
+        if (typeof init === 'string') {
+            this.#searchParams = init.split('&').map((kv) => kv.split('='))
+        } else {
+            this.#searchParams = Object.entries(init)
+        }
+    }
+
+    get(key) {
+        const param = this.#searchParams.find((param) => param[0] === key)
+        return param && param[1]
+    }
+
+    set(key, value) {
+        const param = this.#searchParams.find((param) => param[0] === key)
+
+        if (param) {
+            param[1] = value
+        } else {
+            this.#searchParams.push([key, value])
+        }
+    }
+
+    has(key) {
+        return this.#searchParams.some((param) => param[0] === key)
+    }
+
+    append(key, value) {
+        this.#searchParams.push([key, value])
+    }
+
+    toString() {
+        return this.#searchParams.map((param) => param.join('=')).join('&')
+    }
+
+    *[Symbol.iterator]() {
+        yield* this.#searchParams
+    }
+}

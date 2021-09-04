@@ -14,3 +14,5 @@ function resize(e) {
     console.log('resize')
 }
 window.addEventListener('resize', throttle(resize, 1000))
+
+//场景无限加载

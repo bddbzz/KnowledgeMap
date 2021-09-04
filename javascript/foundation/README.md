@@ -1,12 +1,18 @@
 # JavaScript 基础实现
 
--   bind
--   instanceof
--   clone
--   debounce
--   throttle
--   create
--   promise
--   inheritance
 -   ajax
+-   bind
+-   clone
+-   create
+-   debounce
+-   eventEmitter
+-   flatArray
+-   inheritance
+-   instanceof
+-   parseQuery
+-   promise
+-   storage
+-   throttle
 -   uniqueArray
+-   treeHelper
+-   util
