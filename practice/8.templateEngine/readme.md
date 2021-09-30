@@ -6,38 +6,38 @@
 
 ## 需要实现的特性
 
-- 高性能
-- 安全，XSS 的防范
-- 片段的复用，有以下几个层次：
-  - 一个片段可以被引入到另一处，相当于一个变量到处用的效果
-  - 一个片段被引入时，可以向其传递不同的数据，相当于一个函数到处用的效果
-  - 一个片段可以被外部替换，但外部不提供此片段的话保持一个默认的内容，类似设计模式中的策略模式
-- 支持运行时调试
-- 支持数据输出时的处理，如管道过滤器
-- 自定义分隔符？
+-   高性能
+-   安全，XSS 的防范
+-   片段的复用，有以下几个层次：
+    -   一个片段可以被引入到另一处，相当于一个变量到处用的效果
+    -   一个片段被引入时，可以向其传递不同的数据，相当于一个函数到处用的效果
+    -   一个片段可以被外部替换，但外部不提供此片段的话保持一个默认的内容，类似设计模式中的策略模式
+-   支持运行时调试
+-   支持数据输出时的处理，如管道过滤器
+-   自定义分隔符？
 
 ## 分类
 
 string-based / dom-based
 
-- string-based
-- dom-based
+-   string-based
+-   dom-based
 
 ## 代表性的模板引擎
 
-- jade
-- mustache
-- ejs
-- Numjucks
-- underscore.template
-- Razor
-- Handlebars
-- NornJ（同时支持渲染 html 和 React 组件）
-- baiduTemplate （百度）
-- artTemplate （腾讯）
-- juicer （阿里）
-- doT
-- template.js
+-   jade
+-   mustache
+-   ejs
+-   Numjucks
+-   underscore.template
+-   Razor
+-   Handlebars
+-   NornJ（同时支持渲染 html 和 React 组件）
+-   baiduTemplate （百度）
+-   artTemplate （腾讯）
+-   juicer （阿里）
+-   doT
+-   template.js
 
 ## 现状
 
